@@ -196,7 +196,7 @@ var indicatorModel = function (options) {
   var headlineColor = '777777';
   
   this.colorOptions = {{ site.graph_colors | jsonify }};
-  this.colorSet = {{ this.colorOptions.set | jsonify }};
+  this.colorSet = this.colorOptions.set;
 
   var goalNumber = parseInt(this.indicatorId.slice(this.indicatorId.indexOf('_')+1,this.indicatorId.indexOf('-')));
   var goalColors = [['e5243b', '891523', 'ef7b89', '2d070b', 'f4a7b0', 'b71c2f', 'ea4f62', '5b0e17', 'fce9eb'],
