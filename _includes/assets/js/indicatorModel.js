@@ -195,7 +195,7 @@ var indicatorModel = function (options) {
 
   var headlineColor = '777777';
   
-  this.colorSet = {{ site.colorset | jsonify }};
+  this.colorSet = {{ site.graph_colors.set | jsonify }};
 
   var goalNumber = parseInt(this.indicatorId.slice(this.indicatorId.indexOf('_')+1,this.indicatorId.indexOf('-')));
   var goalColors = [['e5243b', '891523', 'ef7b89', '2d070b', 'f4a7b0', 'b71c2f', 'ea4f62', '5b0e17', 'fce9eb'],
@@ -217,11 +217,11 @@ var indicatorModel = function (options) {
                 ['19486a', '0a1c2a', '8ca3b4', '16377c', 'd1dae1', '11324a', '466c87', '5b73a3', '0f2656']];
 
   var colorSets = {'default':['7e984f', '8d73ca', 'aaa533', 'c65b8a', '4aac8d', 'c95f44'],
-                  'sdgColors':['e5243b', 'DDA63A', '4c9f38', 'c5192d', 'ff3a21', '26bde2', 'fcc30b', 'a21942', 'fd6925', 'dd1367','FD9D24','BF8B2E','3F7E44','0A97D9','56C02B','00689D','19486A'],
-                  'goalColors': goalColors[goalNumber-1],
-                  'customColors': {{ site.customColorList | jsonify }}};
+                  'sdg':['e5243b', 'DDA63A', '4c9f38', 'c5192d', 'ff3a21', '26bde2', 'fcc30b', 'a21942', 'fd6925', 'dd1367','FD9D24','BF8B2E','3F7E44','0A97D9','56C02B','00689D','19486A'],
+                  'goal': goalColors[goalNumber-1],
+                  'custom': {{ site.graph_colors.list | jsonify }}};
 
-  this.numberOfColors = {{ site.numberOfColors | jsonify }}>colorSets[this.colorSet].length ? colorSets[this.colorSet].length : {{ site.numberOfColors | jsonify }};
+  this.numberOfColors = {{ site.graph_colors.number | jsonify }}>colorSets[this.colorSet].length ? colorSets[this.colorSet].length : {{ site.graph_colors.number | jsonify }};
 
   var colors = colorSets[this.colorSet].slice(0,this.numberOfColors);
   
