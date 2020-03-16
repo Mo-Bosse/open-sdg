@@ -199,8 +199,12 @@ var indicatorModel = function (options) {
   this.colorSet = {{ site.graph_color_set | jsonify }};
   this.numberOfColors = {{ site.graph_color_number | jsonify }};
   this.customColors = {{ site.graph_color_list | jsonify }};
-  var colors = opensdg.chartColors(this.indicatorId, this.colorSet, this.numberOfColors, this.customColors);
-  
+  if (opensdg.chartColors){
+    var colors = opensdg.chartColors(this.indicatorId, this.colorSet, this.numberOfColors, this.customColors);
+  }
+  else{
+    var colors = ['19486a', '0a1c2a', '8ca3b4', '16377c', 'd1dae1', '11324a', '466c87', '5b73a3', '0f2656']
+    }
 
   // allow headline + (2 x others)
   var maxDatasetCount = 2 * colors.length;
